@@ -22,22 +22,20 @@
   - direction : 오름차순? 내림차순?
   - Pageable pageable : 변수 선언
 
-## 4. 계층형 아키텍쳐
+## 4. Insert와의 차이
 
 ```
-Client
-  ↓ HTTP
-Controller
-  ↓ DTO
-Service
-  ↓ DTO
-Mapper
-  ↓
-Mapper.xml
-  ↓
-DB (SQL)
-  ↓
-Mapper → Service → Controller
+브라우저가 boardId 요청
+        ↓
+Controller가 boardId를 받음
+        ↓
+Service가 boardId를 Mapper에 전달
+        ↓
+Mapper가 DB에서 SELECT
+        ↓
+조회 결과를 DTO로 변환
+        ↓
+Service → Controller → 브라우저로 DTO 반환
 ```
 
 

@@ -2,10 +2,11 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.practice.insert.boardInsertMapper">
+<mapper namespace="com.example.practice.insert.BoardInsertMapper">
 
     <insert id="insert"
             useGeneratedKeys="true"
+            parameterType="BoardInsertDto"
             keyProperty="boardId">
         INSERT INTO board_table (member_id, category, title, writer, content)
         VALUES (#{memberId}, #{category}, #{title}, #{writer}, #{content})
