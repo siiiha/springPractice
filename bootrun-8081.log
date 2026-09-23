@@ -1,0 +1,42 @@
+Starting a Gradle Daemon, 1 busy and 1 incompatible and 1 stopped Daemons could not be reused, use --status for details
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :resolveMainClassName UP-TO-DATE
+
+> Task :bootRun FAILED
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.8)
+
+2026-09-23T11:50:52.834+09:00  INFO 21268 --- [practice] [           main] c.example.practice.PracticeApplication   : Starting PracticeApplication using Java 17.0.0.1 with PID 21268 (C:\Users\user1\Documents\springPractice\practice\build\classes\java\main started by user1 in C:\Users\user1\Documents\springPractice\practice)
+2026-09-23T11:50:52.837+09:00  INFO 21268 --- [practice] [           main] c.example.practice.PracticeApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-09-23T11:50:53.418+09:00  INFO 21268 --- [practice] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-09-23T11:50:53.427+09:00  INFO 21268 --- [practice] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-23T11:50:53.428+09:00  INFO 21268 --- [practice] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-09-23T11:50:53.462+09:00  INFO 21268 --- [practice] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 595 ms
+2026-09-23T11:50:53.796+09:00  WARN 21268 --- [practice] [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-09-23T11:50:53.803+09:00  INFO 21268 --- [practice] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-09-23T11:50:53.812+09:00 ERROR 21268 --- [practice] [           main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+4 actionable tasks: 1 executed, 3 up-to-date
