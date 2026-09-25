@@ -16,49 +16,44 @@ public class Insert {
     public Long insert(){
         return null;
     }
+
+        @Autowired
         BoardInsertService boardInsertService;
 
-
         @PostMapping("/write")
-
-
-        @GetMapping("/write")
-        public String boardWritePage(){
-            return "board/write";
+        Long boardInsert(@RequestBody boardInsertDto dto) {
+            return boardInsertService.board(dto);
         }
+}
 
+@Getter
+@Setter
+class boardInsertDto {
+    private Long boardId;
+    private Long memberId;
+    private String category;
+    private String title;
+    private String writer;
+    private String content;
 }
 
 @Service
 class BoardInsertService {
-    public Object BoardInsertService(){
+
+    @Autowired
+    boardInsertMapper boardInsertMapper;
+
+    public Long BoardInsertService(){
         return null;
+    }
+
+    Long board(boardInsertDto dto) {
+        boardInsertMapper.insert(dto);
+       return dto.getBoardId();
     }
 }
 
-    @Getter
-    @Setter
-    class BoardInsertDto {
-        private Long boardId;
-        private String category;
-        private String title;
-        private String writer;
-        private String content;
-    }
-
-
-
-//interface BoardInsertMapper{
-//    Long board_id (board)
-//
-//
-//
-//}
-
-// 게시글 생성
-// INSERT
-// 어떤 데이터 받을지 정의
-// 그 데이터 어떻게 들어올건지
-// 그럼 어떻게 처리할건지
-// db 들어가는거 생각하고
-// 잘 들어갔는지 어떻게 확인할건지
+@Mapper
+interface boardInsertMapper {
+    Long insert(boardInsertDto dto);
+    };
