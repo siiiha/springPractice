@@ -13,6 +13,8 @@
 | 05 | `Table ... doesn't exist` | Mapper의 테이블명과 실제 테이블명이 다름 | [이슈 05](issue-05-table-name-mismatch.md) |
 | 06 | `Unknown column 'writer'` | INSERT 컬럼과 실제 테이블 컬럼이 다름 | [이슈 06](issue-06-writer-column-missing.md) |
 | 07 | `member_id doesn't have a default value` | 필수 컬럼이 INSERT 요청에서 빠짐 | [이슈 07](issue-07-member-id-required.md) |
+| 08 | `wrong name: ...boardInsertMapper` | Java 인터페이스명과 XML namespace의 대소문자가 다름 | [이슈 08](issue-08-mapper-name-case-mismatch.md) |
+| 09 | `Could not resolve type alias 'BoardInsertDto'` | 등록하지 않은 DTO 단축 이름을 `parameterType`에 사용함 | [이슈 09](issue-09-dto-type-alias.md) |
 
 ## 오류가 발생한 위치
 
@@ -27,7 +29,9 @@ Service
 MyBatis Mapper
   ├─ 이슈 02: statement id 오타
   ├─ 이슈 03: 파라미터 표기 오타
-  └─ 이슈 04: 자동 생성 PK 처리
+  ├─ 이슈 04: 자동 생성 PK 처리
+  ├─ 이슈 08: Mapper 이름 대소문자 불일치
+  └─ 이슈 09: DTO 타입 별칭을 찾지 못함
        ↓
 Database
   ├─ 이슈 05: 테이블명 불일치
@@ -39,4 +43,5 @@ Database
 
 - `415`: 서버가 요청 본문의 형식을 지원하지 않는다. `Content-Type`과 Controller 선언을 먼저 확인한다.
 - `500`: 요청은 서버에 도착했지만 내부 처리에 실패했다. 실행 로그의 첫 번째 `Caused by:`를 확인한다.
+- 애플리케이션 시작 실패: 가장 아래쪽 `Caused by:`에서 Mapper XML, namespace, 타입 이름을 확인한다.
 

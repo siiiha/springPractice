@@ -1,10 +1,11 @@
 package com.example.practice.insert;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,14 +22,16 @@ public class Insert {
         BoardInsertService boardInsertService;
 
         @PostMapping("/write")
-        Long boardInsert(@RequestBody boardInsertDto dto) {
+        Long boardInsert(@RequestBody BoardInsertDto dto) {
             return boardInsertService.board(dto);
         }
 }
 
 @Getter
 @Setter
-class boardInsertDto {
+@NoArgsConstructor
+@AllArgsConstructor
+class BoardInsertDto {
     private Long boardId;
     private Long memberId;
     private String category;
@@ -41,19 +44,19 @@ class boardInsertDto {
 class BoardInsertService {
 
     @Autowired
-    boardInsertMapper boardInsertMapper;
+    BoardInsertMapper boardInsertMapper;
 
     public Long BoardInsertService(){
         return null;
     }
 
-    Long board(boardInsertDto dto) {
+    Long board(BoardInsertDto dto) {
         boardInsertMapper.insert(dto);
        return dto.getBoardId();
     }
 }
 
 @Mapper
-interface boardInsertMapper {
-    Long insert(boardInsertDto dto);
+interface BoardInsertMapper {
+    Long insert(BoardInsertDto dto);
     };
