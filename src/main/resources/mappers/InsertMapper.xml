@@ -4,7 +4,7 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.practice.insert.BoardInsertMapper">
 
-    <insert id="insert"
+    <insert id="insertBoard"
             useGeneratedKeys="true"
             parameterType="BoardInsertDto"
             keyProperty="boardId">

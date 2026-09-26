@@ -2,12 +2,33 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.practice.select.SelectMapper">
+<mapper namespace="com.example.practice.select.BoardSelectMapper">
 
-    <select id="selectDetail"
-            resultType="SelectDto">
+    <select id="getBoardDetail"
+            resultType="BoardSelectDto">
         SELECT board_id, category, title, writer, content
         FROM board_table
         WHERE board_id = #{boardId}
     </select>
+
+    <select id="selectBoardList"
+            resultType="BoardSelectDto">
+        SELECT board_id, member_id, category, title, writer, content, create_at, update_at
+        FROM board_table
+        ORDER BY board_id DESC
+<!--        LIMIT #{offset}, #{limit}-->
+    </select>
+
+    <select id="selectBoardListCount"
+            resultType="int">
+        SELECT COUNT(*)
+        FROM board_table
+    </select>
+
+<!--    <update id="increaseViewCount"-->
+<!--            parameterType="long">-->
+<!--        UPDATE board_table SET count = count + 1-->
+<!--        WHERE board_id = #{boardId}-->
+<!--    </update>-->
+
 </mapper>
