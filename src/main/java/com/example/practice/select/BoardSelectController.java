@@ -37,7 +37,6 @@ public class BoardSelectController {
     @GetMapping("/{boardId}")
     @ResponseBody
     public BoardSelectDto getBoardDetail(@PathVariable Long boardId) {
-        System.out.println("요청들어옴!");
         return boardSelectService.getBoardDetail(boardId);
     }
 }
