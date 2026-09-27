@@ -1,4 +1,4 @@
-# 게시판 등록 파이프라인
+# 기본 CRUD 흐름을 연습
 
 ## 학습 원칙
 
@@ -6,21 +6,16 @@
 - 필요한 정보를 검색하거나 학습하는 용도로 사용한다.
 - 약 10~15분 고민한 뒤 막히면 질문한다.
 
-## 1. 게시글 작성에 필요한 데이터
+## 1. 필요한 데이터
 - 제목(`title`)
 - 카테고리(`category`)
 - 본문(`content`)
 - 작성자(`writer`)
 - 멤버아이디(`memberId`)
 - 작성일(`createdAt`)
+- 삭제일(`deleteAt`)
 
 ## 2. 스키마 설계
-- PK는 무엇으로 정할 것인가?
-    - `boradId`
-- `boradId`는 DB에서 자동으로 생성한다.
-- 중복 검사가 필요한가?
-    - 게시글은 일반적으로 필요하지 않다.
-
 ```
 board_id    BIGINT AUTO_INCREMENT PRIMARY KEY,
 category    VARCHAR(50)  NOT NULL,
@@ -31,17 +26,7 @@ created_at  DATETIME     DEFAULT CURRENT_TIMESTAMP,
 updated_at  DATETIME     DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ```
 
-## 3. 요청 데이터 처리
-- JSON: 문자열 데이터 포맷으로 공용 텍스트 문서
-- DTO란 계층간 데이터 전송을 위해 사용되는 객체.
-  - 데이터 묶어서 하나로 옮기면 간편(검증과 로직 처리를 한번에~!)
-  - 포장해서 보내는거라(캡슐화) 보안에 좋다~!
-
-- `@RequestBody`를 사용해 JSON을 객체로 변환한다.
-- 왜 `@RequestBody`인가?
-  - 코드의 생산성, 가독성, 유지보수 면에서 직접 코드로 변환하는 것보다 우수하다.
-
-## 4. 계층형 아키텍쳐
+## 3. 계층형 아키텍쳐
 
 ```
 Client
@@ -84,12 +69,15 @@ Mapper → Service → Controller
 4. 데이터베이스 저장 확인
 
 ## 7. 할 일
-- [✓] 스키마 설계
-- [ ] DTO 작성
-- [ ] Controller 작성
-- [ ] Service 작성
-- [ ] Mapper 작성
-- [ ] 등록 테스트
+- [✓] insert pipeline
+- [✓] Board Insert
+- [✓] select pipeline
+- [✓] Board Select Detail
+- [ ] Board Select List
+- [✓] update pipeline
+- [ ] Board Update
+- [ ] delete pipeline
+- [ ] Board Delete
 
 
 
