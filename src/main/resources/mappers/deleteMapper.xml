@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.practice.delete.BoardDeleteMapper">
+
+    <update id="deleteBoard" parameterType="com.example.practice.delete.BoardDeleteDto">
+        UPDATE board_table
+        SET deleted_at = NOW()
+        WHERE board_id = #{boardId}
+            AND member_id = #{memberId}
+            AND deleted_at IS NULL
+    </update>
+
+</mapper>

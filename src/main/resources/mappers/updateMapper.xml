@@ -12,6 +12,7 @@
             <if test="content !=null">content = #{content},</if>
         </set>
         WHERE board_id = #{boardId}
+          AND deleted_at IS NULL
     </update>
 
     <select id="getBoardDetail"
@@ -22,6 +23,7 @@
         content
         FROM board_table
         WHERE board_id = #{boardId}
+          AND deleted_at IS NULL
     </select>
 
 </mapper>

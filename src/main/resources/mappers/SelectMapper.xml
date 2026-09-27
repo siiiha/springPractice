@@ -9,12 +9,14 @@
         SELECT board_id, category, title, writer, content
         FROM board_table
         WHERE board_id = #{boardId}
+        AND deleted_at IS NULL
     </select>
 
     <select id="selectBoardList"
             resultType="BoardSelectDto">
         SELECT board_id, member_id, category, title, writer, content, create_at, update_at
         FROM board_table
+        WHERE deleted_at IS NULL
         ORDER BY board_id DESC
 <!--        LIMIT #{offset}, #{limit}-->
     </select>
@@ -23,6 +25,7 @@
             resultType="int">
         SELECT COUNT(*)
         FROM board_table
+        WHERE deleted_at IS NULL
     </select>
 
 <!--    <update id="increaseViewCount"-->

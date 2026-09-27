@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.ui.Model;
 import java.util.List;
 
 import java.time.LocalDateTime;
@@ -24,13 +23,9 @@ public class BoardSelectController {
 
     // 게시판 전체 조회
     @GetMapping("/list")
-    public String getBoardList(Model model) {
-        List<BoardSelectDto> boardList = boardSelectService.getBoardList();
-        model.addAttribute("selectList", boardList);
-//        model.addAttribute("boardinfo", result.getPageList());
-//        model.addAttribute("condition", condition);
-
-        return "boards/list";
+    @ResponseBody
+    public List<BoardSelectDto> getBoardList() {
+        return boardSelectService.getBoardList();
     }
 
     //게시판 상세 조회
