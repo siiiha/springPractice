@@ -49,15 +49,17 @@ class BoardUpdateService{
     public BoardUpdateService(BoardUpdateMapper boardUpdateMapper){
         this.boardUpdateMapper = boardUpdateMapper;
     }
-
+    // 수정할 게시글 번호와 내용이 담긴 DTO를 받고, Long 타입의 값을 반환하는 메서드
     public Long updateBoard(BoardUpdateDto dto) {
+        // DTO를 Mapper에 전달해서 게시글 수정 SQL을 실행
         boardUpdateMapper.updateBoard(dto);
+        // DTO에 담긴 게시글 번호를 꺼내서 호출한 컨트롤러에 반환
         return dto.getBoardId();
     }
 
-    public BoardUpdateDto getBoardDetail(Long boardId) {
-        return boardUpdateMapper.getBoardDetail(boardId);
-    }
+//    public BoardUpdateDto getBoardDetail(Long boardId) {
+//        return boardUpdateMapper.getBoardDetail(boardId);
+//    }
 }
 
 @Mapper
